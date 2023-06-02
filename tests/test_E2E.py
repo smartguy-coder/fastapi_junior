@@ -24,6 +24,8 @@ def test_root(client: TestClient):
     assert response.json() == {'message': 'root endpoint'}
 
 
+
+
 def test_number_decreaser_positive(client: TestClient):
     response = client.get('/100')
     assert response.status_code == status.HTTP_200_OK
