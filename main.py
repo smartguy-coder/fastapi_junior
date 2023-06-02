@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import sentry_sdk
 
 from pages.router import router
-import library
+# import library
 
 
 sentry_sdk.init(
@@ -27,7 +27,7 @@ app.include_router(router)
 @app.get('/')
 def index():
     message = 'root endpoint'
-    library.send_telegram_message(message)
+    # library.send_telegram_message(message)
     return {'message': message}
 
 

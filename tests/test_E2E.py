@@ -3,12 +3,18 @@ import pytest
 from fastapi.testclient import TestClient
 from fastapi import status
 
-import main
+import sys
+import os
 
 
 @pytest.fixture()
 def client():
-    with TestClient(main.app) as client:
+    print(sys.path)
+    print(os.getcwdb().decode("utf-8"))
+    sys.path.append(os.getcwdb().decode("utf-8").replace('\\', '\\\\'))
+    from main import app
+    print(sys.path)
+    with TestClient(app) as client:
         yield client
 
 
