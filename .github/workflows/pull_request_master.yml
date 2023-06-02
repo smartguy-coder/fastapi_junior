@@ -39,6 +39,6 @@ jobs:
           fi
       - name: Lint with flake8
         run: |
-          flake8 .
+          flake8 .  --max-line-length=130
       - name: Test with pytest
         run: pytest .
