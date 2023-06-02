@@ -23,7 +23,7 @@ jobs:
       matrix:
         python-version: [3.10.11, 3.11.3]
     steps:
-      - uses: actions/chechout@v3
+      - uses: actions/checkout@v3
       - name: Install python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
