@@ -43,3 +43,5 @@ jobs:
           flake8 .  --max-line-length=130
       - name: Test with pytest
         run: pytest .
+      - name: final
+        run: echo "🍏 This job's status is ${{ job.status }}."
