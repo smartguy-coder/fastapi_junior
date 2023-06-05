@@ -31,6 +31,11 @@ def index():
     return {'message': message}
 
 
+@app.get('/new/data')
+def new():
+    return {'new': True}
+
+
 @app.get('/{number}')
 def number_decreaser(number: int, query: int = None):
     if query is not None:
