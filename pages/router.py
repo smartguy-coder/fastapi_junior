@@ -10,7 +10,7 @@ templates = Jinja2Templates(directory='templates')
 
 @router.get('/')
 def get_main_crypto_info(request: Request):
-    tags = ['currency', 'crypto', 'money']
+    tags = ['currency', 'crypto', 'money', 'kjehfkerferk']
 
     coins = [
         {'name': 'BTC', 'price': 500},
@@ -24,5 +24,6 @@ def get_main_crypto_info(request: Request):
             'request': request,
             'tags': tags,
             'coins': coins,
+            'title': 'my title'
         },
     )

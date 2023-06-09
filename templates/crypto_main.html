@@ -1,19 +1,52 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+
 {% block content %}
-
+    <img src="https://cdn-icons-png.flaticon.com/512/46/46775.png" class="rounded float-start" width="150" alt="...">
+    <img src="{{ url_for('static', path='second.png') }}" class="rounded float-end" width="150" alt="...">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <h2>Tags</h2>
+
+<ul class="list-group">
     {% for tag in tags %}
-    <p>>>>> {{ tag }}</p>
-
+    <li class="list-group-item">{{ tag }}</li>
     {% endfor %}
-
+</ul>
 
     <h2>Coins</h2>
     {% for coin in coins %}
     <p>>>>> {{ coin.name }} {{ coin.price }}</p>
 
     {% endfor %}
+
+
+<form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 
 {% endblock %}

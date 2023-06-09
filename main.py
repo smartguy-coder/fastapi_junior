@@ -1,7 +1,11 @@
-from fastapi import FastAPI
+import shutil
+
+from fastapi import FastAPI, UploadFile, File
+from fastapi.staticfiles import StaticFiles
 import sentry_sdk
 
 from pages.router import router
+import schemas
 # import library
 
 
@@ -11,6 +15,8 @@ sentry_sdk.init(
 )
 
 app = FastAPI(title='CryptoData', version='1.0')
+
+app.mount('/static', StaticFiles(directory='static'), name='static')
 app.include_router(router)
 
 
@@ -24,11 +30,11 @@ app.include_router(router)
 #     library.send_telegram_message('API app closed')
 
 
-@app.get('/')
-def index():
+@app.post('/{name}/{age}', response_model=schemas.Coin)
+def index(name: str, age: int, coin: schemas.Coin):
     message = 'root endpoint'
-    # library.send_telegram_message(message)
-    return {'message': message}
+
+    return {'message': coin}
 
 
 @app.get('/new/data')
@@ -47,3 +53,10 @@ def number_decreaser(number: int, query: int = None):
         'message': 'ok',
         'result': result,
     }
+
+
+@app.post('/file')
+def file_upload(file: UploadFile = File(...)):
+    with open(f'downloads/{file.filename}', 'wb') as buffer:
+        shutil.copyfileobj(file.file, buffer)
+    return {}
